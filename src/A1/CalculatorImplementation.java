@@ -7,14 +7,12 @@ import java.util.concurrent.TimeUnit;
 
 public class CalculatorImplementation implements Calculator {
     Stack<Integer> stack = new Stack<>();
-
-    @Override
+    
     public void pushValue(int val) {
         stack.push(val);
         System.out.println("a value pushed in: " + val);
     }
-
-    @Override
+    
     public void pushOperation(String operator) throws RemoteException {
         if (operator.isEmpty() || operator == null || operator.length() == 0) {
             System.err.println("Wrong operator type!");
@@ -31,15 +29,13 @@ public class CalculatorImplementation implements Calculator {
             System.err.println("Wrong operator type!");
         }
     }
-
-    @Override
+    
     public int pop() {
         int top = stack.pop();
         System.out.println("a value popped out: " + top);
         return top;
     }
-
-    @Override
+    
     public boolean isEmpty() {
         if (stack.isEmpty())
             System.out.println("Stack is empty.");
@@ -47,8 +43,7 @@ public class CalculatorImplementation implements Calculator {
             System.out.println("Stack not empty");
         return stack.isEmpty();
     }
-
-    @Override
+    
     public int delayPop(int millis) {
         try {
             TimeUnit.MILLISECONDS.sleep(millis);
@@ -58,8 +53,7 @@ public class CalculatorImplementation implements Calculator {
             throw new RuntimeException(e);
         }
     }
-
-    @Override
+    
     public int min(Stack stack) throws RemoteException {
         if (stack.size() < 2)
             System.err.println("no enough value or no operator!");
@@ -72,11 +66,11 @@ public class CalculatorImplementation implements Calculator {
                 minVal = val;
         }
         System.out.println(stack.toString());
+        stack.clear();
         System.out.println("min:" + minVal);
         return minVal;
     }
-
-    @Override
+    
     public int max(Stack stack) throws RemoteException {
         if (stack.size() < 2)
             System.err.println("no enough value or no operator!");
@@ -89,11 +83,11 @@ public class CalculatorImplementation implements Calculator {
                 maxVal = val;
         }
         System.out.println(stack.toString());
+        stack.clear();
         System.out.println("max:" + maxVal);
         return maxVal;
     }
-
-    @Override
+    
     public int lcm(Stack stack) throws RemoteException {
         int lcm = (int) stack.peek();
         Iterator<Integer> iterator = stack.iterator();
@@ -101,11 +95,11 @@ public class CalculatorImplementation implements Calculator {
             lcm = lcm(lcm, iterator.next());
 
         System.out.println(stack.toString());
+        stack.clear();
         System.out.println("lcm:" + lcm);
         return lcm;
     }
-
-    @Override
+    
     public int gcd(Stack stack) throws RemoteException {
         int gcd = (int) stack.peek();
         Iterator<Integer> iterator = stack.iterator();
@@ -113,6 +107,7 @@ public class CalculatorImplementation implements Calculator {
             gcd = gcd(gcd, iterator.next());
 
         System.out.println(stack.toString());
+        stack.clear();
         System.out.println("gcd:" + gcd);
         return gcd;
     }

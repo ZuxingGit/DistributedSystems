@@ -1,20 +1,19 @@
 package A1;
 
-
-import java.rmi.Remote;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 public class CalculatorServer {
-    public CalculatorServer(){}
+    public CalculatorServer() {
+    }
 
     public static void main(String[] args) {
         try {
-            CalculatorImplementation obj = new CalculatorImplementation();
+            Calculator obj = new CalculatorImplementation();
             Calculator stub = (Calculator) UnicastRemoteObject.exportObject(obj, 0);
 
-//            Bind the remote object's stub in the registry
+            // Bind the remote object's stub in the registry
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             registry.bind("Calculator", stub);
 
