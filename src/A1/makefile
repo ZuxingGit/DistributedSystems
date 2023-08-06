@@ -48,24 +48,18 @@ javadoc: $(all_javas)
 clean:
 	$(RM) $(OUTPUT_DIR)
 
+register:
+	cd $(OUTPUT_DIR);
+	rmiregistry 
 
-
-#getIn:
-#	cd /Users/wzx/Development/DistributedSystems/src/A1
-#	pwd
-#
-#compile:
-#	javac -d /Users/wzx/Development/RMI/assignment1 Calculator.java CalculatorImplementation.java CalculatorServer.java CalculatorClient.java
-#
 #moveTo:
-#	cd /Users/wzx/Development/RMI/assignment1
-#
-#register:
-#	rmiregistry 
-#
-#startServer:
-#	java -classpath /Users/wzx/Development/RMI/assignment1 -Djava.rmi.server.codebase=file:/Users/wzx/Development/RMI/assignment1/ A1.CalculatorServer &
-#
-#startClient:
-#	java -classpath /Users/wzx/Development/RMI/assignment1 A1.CalculatorClient
+#	cd $(OUTPUT_DIR);
+
+startServer:
+	cd $(OUTPUT_DIR);
+	java -classpath $(OUTPUT_DIR) -Djava.rmi.server.codebase=file:$(OUTPUT_DIR)/ A1.CalculatorServer &
+
+startClient:
+	cd $(OUTPUT_DIR);
+	java -classpath $(OUTPUT_DIR) A1.CalculatorClient
 

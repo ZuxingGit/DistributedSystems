@@ -1,0 +1,30 @@
+Hello,
+execute these commands one by one:
+commands are lines starting with a '>'
+
+1. execute make
+>make
+
+2. start RMI registry
+#enter the directory where class files are
+>cd classes
+>rmiregistry
+
+3. start Server
+create a new command window
+
+##enter the directory where class files are(the same location as the last step)
+>cd classes
+     
+#parameters in [ ] should be changed according your environment and path
+>java -classpath [/Users/.../classes] -Djava.rmi.server.codebase=file:[/Users/.../classes/] example.hello.Server &
+
+4. start Client
+create a new command window
+
+##enter the directory where class files are(the same location as the last step)
+>cd classes
+#parameters in [ ] should be changed according your environment and path
+>java -classpath [/Users/.../classes] example.hello.Client
+
+# you can see output details in server's window or clients'.

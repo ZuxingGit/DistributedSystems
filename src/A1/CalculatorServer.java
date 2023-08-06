@@ -14,7 +14,7 @@ public class CalculatorServer {
             Calculator stub = (Calculator) UnicastRemoteObject.exportObject(obj, 0);
 
             // Bind the remote object's stub in the registry
-            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            Registry registry = LocateRegistry.getRegistry(1099);
             registry.bind("Calculator", stub);
 
             System.err.println("---CalculatorServer ready---");
